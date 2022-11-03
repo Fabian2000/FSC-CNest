@@ -3,7 +3,7 @@
     public class PathBuilder
     {
         private List<string> _path = new();
-        private int _currentLocation = -1;
+        private List<string> _forwardHistory = new();
 
         public PathBuilder()
         {
@@ -19,7 +19,7 @@
         {
             get
             {
-                return _currentLocation == _path.Count - 1;
+                return _forwardHistory.Any();
             }
         }
 
@@ -27,7 +27,7 @@
         {
             get
             {
-                return _currentLocation > -1;
+                return _path.Any();
             }
         }
 
@@ -56,16 +56,8 @@
 
         public PathBuilder GoTo(List<string> pathElements)
         {
-            if (_path.Count > 0 && _currentLocation > 0)
-            {
-                int index = _currentLocation + 1;
-                int count = (_path.Count - 1) - index;
-                _path.RemoveRange(index, count);
-            }
-
             _path.AddRange(pathElements);
-
-            _currentLocation = _path.Count - 1;
+            _forwardHistory.Clear();
 
             return this;
         }
@@ -74,7 +66,8 @@
         {
             if (CanGoForward)
             {
-                _currentLocation++;
+                _path.Add(_forwardHistory[_forwardHistory.Count - 1]);
+                _forwardHistory.RemoveAt(_forwardHistory.Count - 1);
             }
 
             return this;
@@ -84,7 +77,8 @@
         {
             if (CanGoBack)
             {
-                _currentLocation--;
+                _forwardHistory.Add(_path[_path.Count - 1]);
+                _path.RemoveAt(_path.Count - 1);
             }
 
             return this;
@@ -92,12 +86,7 @@
 
         public override string ToString()
         {
-            var path = new List<string>();
-            for (var i = 0; i <= _currentLocation; i++)
-            {
-                path.Add(_path[i]);
-            }
-            return Path.Combine(path.ToArray());
+            return Path.Combine(_path.ToArray());
         }
     }
 }
