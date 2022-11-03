@@ -1,5 +1,3 @@
 ﻿using FSC_CNest.Terminal;
 
-
-
-Console.WriteLine();
+Terminal.WriteLine(Terminal.ReadLine("Password:", true));
