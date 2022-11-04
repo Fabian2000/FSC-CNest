@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace FSC_CNest.Terminal
+namespace FSC_CNest.TerminalAdvanced
 {
     public static class Terminal
     {
