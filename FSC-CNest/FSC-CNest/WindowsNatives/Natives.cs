@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace FSC_CNest.WindowsNatives
@@ -58,5 +59,18 @@ namespace FSC_CNest.WindowsNatives
         ref UInt32 FileSystemFlags,
         StringBuilder FileSystemNameBuffer,
         UInt32 FileSystemNameSize);
+
+        [DllImport("Gdi32.dll")]
+        public static extern IntPtr CreateCompatibleDC(IntPtr hdc);
+
+        [DllImport("Gdi32.dll")]
+        public static extern int GetDeviceCaps(IntPtr hdc, int index);
+
+        [DllImport("Gdi32.dll")]
+        public static extern IntPtr CreateCompatibleBitmap(IntPtr hdc, int cx, int cy);
+
+        [DllImport("Gdi32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool DeleteDC(IntPtr hdc);
     }
 }
