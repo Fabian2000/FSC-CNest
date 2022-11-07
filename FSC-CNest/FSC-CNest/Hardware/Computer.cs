@@ -1,6 +1,43 @@
-﻿namespace FSC_CNest.Hardware
+﻿using FSC_CNest.IO;
+using FSC_CNest.WindowsNatives;
+using System.Text;
+
+namespace FSC_CNest.Hardware
 {
-    internal class Computer
+    public static class Computer
     {
+        public static void GetHardwareInfo(out string? volumeSerialNumber, out string? volumeMaxComponentLength, out string? volumeFileSystemName, out string computerName)
+        {
+            GetHardwareInfo(PathVar.CurrentDrive, out volumeSerialNumber, out volumeMaxComponentLength, out volumeFileSystemName, out computerName);
+        }
+
+        public static void GetHardwareInfo(string path, out string? volumeSerialNumber, out string? volumeMaxComponentLength, out string? volumeFileSystemName, out string computerName)
+        {
+            if (!OperatingSystem.IsWindows())
+            {
+                throw new PlatformNotSupportedException();
+            }
+
+            uint serialNumber = 0;
+            uint maxComponentLength = 0;
+            var sbVolumeName = new StringBuilder(256);
+            var fileSystemFlags = new UInt32();
+            var sbFileSystemName = new StringBuilder(256);
+
+            if (Natives.GetVolumeInformation(path, sbVolumeName, (uint)sbVolumeName.Capacity, ref serialNumber, ref maxComponentLength, ref fileSystemFlags, sbFileSystemName, (uint)sbFileSystemName.Capacity) != 0)
+            {
+                volumeSerialNumber = serialNumber.ToString();
+                volumeMaxComponentLength = maxComponentLength.ToString();
+                volumeFileSystemName = sbFileSystemName.ToString();
+            }
+            else
+            {
+                volumeSerialNumber = null;
+                volumeMaxComponentLength = null;
+                volumeFileSystemName = null;
+            }
+
+            computerName = Environment.MachineName;
+        }
     }
 }
