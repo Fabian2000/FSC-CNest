@@ -19,6 +19,7 @@
 	<PackageTags>Framework, Quick-Code, CNest, Easy, Extended, Terminal, Crypt, Encryption, Decryption, Extensions, Crossplatform</PackageTags>
 	<PackageReleaseNotes>This is the first public release of CNest</PackageReleaseNotes>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<Company>Fabian Schlüter</Company>
   </PropertyGroup>
 
   <ItemGroup>
