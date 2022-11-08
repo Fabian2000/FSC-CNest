@@ -20,6 +20,7 @@
 	<PackageReleaseNotes>This is the first public release of CNest</PackageReleaseNotes>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	<Company>Fabian Schlüter</Company>
+	<Authors>Fabian Schlüter</Authors>
   </PropertyGroup>
 
   <ItemGroup>
