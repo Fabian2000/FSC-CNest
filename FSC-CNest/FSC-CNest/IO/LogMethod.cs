@@ -1,4 +1,6 @@
-﻿namespace FSC_CNest.IO
+﻿using System;
+
+namespace FSC_CNest.IO
 {
     [Flags]
     public enum LogMethod

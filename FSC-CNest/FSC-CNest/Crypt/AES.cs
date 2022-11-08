@@ -1,4 +1,6 @@
 ﻿using FSC_CNest.Extensions;
+using System;
+using System.IO;
 using System.Security.Cryptography;
 
 namespace FSC_CNest.Crypt

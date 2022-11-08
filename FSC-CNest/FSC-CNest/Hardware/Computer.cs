@@ -1,5 +1,7 @@
 ﻿using FSC_CNest.IO;
 using FSC_CNest.WindowsNatives;
+using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace FSC_CNest.Hardware
@@ -29,7 +31,7 @@ namespace FSC_CNest.Hardware
         /// <exception cref="PlatformNotSupportedException"></exception>
         public static void GetHardwareInfo(string path, out string? volumeSerialNumber, out string? volumeMaxComponentLength, out string? volumeFileSystemName, out string computerName)
         {
-            if (!OperatingSystem.IsWindows())
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 throw new PlatformNotSupportedException();
             }

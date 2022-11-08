@@ -1,4 +1,8 @@
-﻿namespace FSC_CNest.IO
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace FSC_CNest.IO
 {
     /// <summary>
     /// A path builder to build paths, go forward and backwards

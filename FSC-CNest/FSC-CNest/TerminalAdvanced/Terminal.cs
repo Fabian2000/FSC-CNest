@@ -1,7 +1,13 @@
-﻿using System.Text;
+﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace FSC_CNest.TerminalAdvanced
 {
+    /// <summary>
+    /// Terminal is a 100% one to one copy from the console class with the same + advanced features. Don't use Console, use Terminal
+    /// </summary>
     public static class Terminal
     {
         #region Properties
@@ -37,7 +43,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.BufferHeight;
             set 
             { 
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.BufferHeight = value; 
                 }
@@ -52,7 +58,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.BufferWidth;
             set 
             { 
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.BufferWidth = value; 
                 }
@@ -70,7 +76,7 @@ namespace FSC_CNest.TerminalAdvanced
         {
             get 
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     return Console.CapsLock;
                 }
@@ -94,7 +100,7 @@ namespace FSC_CNest.TerminalAdvanced
         {
             get
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     return Console.NumberLock;
                 }
@@ -133,7 +139,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.CursorSize;
             set
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.CursorSize = value;
                 }
@@ -156,7 +162,7 @@ namespace FSC_CNest.TerminalAdvanced
         {
             get
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     return Console.CursorVisible;
                 }
@@ -165,7 +171,7 @@ namespace FSC_CNest.TerminalAdvanced
             }
             set
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.CursorVisible = value;
                 }
@@ -277,7 +283,7 @@ namespace FSC_CNest.TerminalAdvanced
         {
             get
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     return Console.Title;
                 }
@@ -295,7 +301,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.WindowHeight;
             set
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.WindowHeight = value;
                 }
@@ -310,7 +316,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.WindowWidth;
             set
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.WindowWidth = value;
                 }
@@ -325,7 +331,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.WindowLeft;
             set
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.WindowLeft = value;
                 }
@@ -340,7 +346,7 @@ namespace FSC_CNest.TerminalAdvanced
             get => Console.WindowTop;
             set
             {
-                if (OperatingSystem.IsWindows())
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     Console.WindowTop = value;
                 }
@@ -388,7 +394,7 @@ namespace FSC_CNest.TerminalAdvanced
         /// <param name="duration">The duration of the beep measured in milliseconds</param>
         public static void Beep(int frequency, int duration)
         {
-            if (OperatingSystem.IsWindows())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.Beep(frequency, duration);
             }
@@ -535,19 +541,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to byte, or 0 if no more lines are available</returns>
         public static byte ReadByte()
         {
             return ReadByte(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to byte, or 0 if no more lines are available</returns>
         public static byte ReadByte(string displayText)
         {
             if (byte.TryParse(ReadLine(displayText), out byte value))
@@ -559,19 +565,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to int, or 0 if no more lines are available</returns>
         public static int ReadInt()
         {
             return ReadInt(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to int, or 0 if no more lines are available</returns>
         public static int ReadInt(string displayText)
         {
             if (int.TryParse(ReadLine(displayText), out int value))
@@ -583,19 +589,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to long, or 0 if no more lines are available</returns>
         public static long ReadLong()
         {
             return ReadLong(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to long, or 0 if no more lines are available</returns>
         public static long ReadLong(string displayText)
         {
             if (long.TryParse(ReadLine(displayText), out long value))
@@ -607,19 +613,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to float, or 0 if no more lines are available</returns>
         public static float ReadFloat()
         {
             return ReadFloat(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to float, or 0 if no more lines are available</returns>
         public static float ReadFloat(string displayText)
         {
             if (float.TryParse(ReadLine(displayText), out float value))
@@ -631,19 +637,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to double, or 0 if no more lines are available</returns>
         public static double ReadDouble()
         {
             return ReadDouble(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to double, or 0 if no more lines are available</returns>
         public static double ReadDouble(string displayText)
         {
             if (double.TryParse(ReadLine(displayText), out double value))
@@ -655,19 +661,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to char, or 0 if no more lines are available</returns>
         public static char ReadChar()
         {
             return ReadChar(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to char, or 0 if no more lines are available</returns>
         public static char ReadChar(string displayText)
         {
             if (char.TryParse(ReadLine(displayText), out char value))
@@ -679,19 +685,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to uint, or 0 if no more lines are available</returns>
         public static uint ReadUInt()
         {
             return ReadChar(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to uint, or 0 if no more lines are available</returns>
         public static uint ReadUInt(string displayText)
         {
             if (uint.TryParse(ReadLine(displayText), out uint value))
@@ -703,19 +709,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to ulong, or 0 if no more lines are available</returns>
         public static ulong ReadULong()
         {
             return ReadULong(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to ulong, or 0 if no more lines are available</returns>
         public static ulong ReadULong(string displayText)
         {
             if (ulong.TryParse(ReadLine(displayText), out ulong value))
@@ -727,19 +733,19 @@ namespace FSC_CNest.TerminalAdvanced
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next line of characters from the input stream converted to bool, or 0 if no more lines are available</returns>
         public static bool ReadBool()
         {
             return ReadBool(string.Empty);
         }
 
         /// <summary>
-        /// 
+        /// Reads the next line of characters from the standard input stream
         /// </summary>
-        /// <param name="displayText"></param>
-        /// <returns></returns>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream converted to bool, or 0 if no more lines are available</returns>
         public static bool ReadBool(string displayText)
         {
             switch (ReadLine(displayText)?.ToLower())
@@ -759,11 +765,21 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Cursor
 
+#if NET6_0_OR_GREATER
+        /// <summary>
+        /// Gets the position of the cursor
+        /// </summary>
+        /// <returns>The column and row position of the cursor</returns>
         public static (int Left, int Top) GetCursorPosition()
         {
             return Console.GetCursorPosition();
         }
-
+#endif
+        /// <summary>
+        /// Sets the position of the cursor
+        /// </summary>
+        /// <param name="left">The column position of the cursor. Columns are numbered from left to right starting at 0</param>
+        /// <param name="top">The row position of the cursor. Rows are numbered from top to bottom starting at 0</param>
         public static void SetCursorPosition(int left, int top)
         {
             Console.SetCursorPosition(left, top);
@@ -773,25 +789,51 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Buffer
 
+        /// <summary>
+        /// Copies a specified source area of the screen buffer to a specified destination area
+        /// </summary>
+        /// <param name="sourceLeft">The leftmost column of the source area</param>
+        /// <param name="sourceTop">The topmost row of the source area</param>
+        /// <param name="sourceWidth">The number of columns in the source area</param>
+        /// <param name="sourceHeight">The number of rows in the source area</param>
+        /// <param name="targetLeft">The leftmost column of the destination area</param>
+        /// <param name="targetTop">The topmost row of the destination area</param>
         public static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop)
         {
-            if (OperatingSystem.IsWindows())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.MoveBufferArea(sourceLeft, sourceTop, sourceWidth, sourceHeight, targetLeft, targetTop);
             }
         }
 
+        /// <summary>
+        /// Copies a specified source area of the screen buffer to a specified destination area
+        /// </summary>
+        /// <param name="sourceLeft">The leftmost column of the source area</param>
+        /// <param name="sourceTop">The topmost row of the source area</param>
+        /// <param name="sourceWidth">The number of columns in the source area</param>
+        /// <param name="sourceHeight">The number of rows in the source area</param>
+        /// <param name="targetLeft">The leftmost column of the destination area</param>
+        /// <param name="targetTop">The topmost row of the destination area</param>
+        /// <param name="sourceChar">The character used to fill the source area</param>
+        /// <param name="sourceForeColor">The foreground color used to fill the source area</param>
+        /// <param name="sourceBackColor">The background color used to fill the source area</param>
         public static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop, char sourceChar, ConsoleColor sourceForeColor, ConsoleColor sourceBackColor)
         {
-            if (OperatingSystem.IsWindows())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.MoveBufferArea(sourceLeft, sourceTop, sourceWidth, sourceHeight, targetLeft, targetTop, sourceChar, sourceForeColor, sourceBackColor);
             }
         }
 
+        /// <summary>
+        /// Sets the height and width of the screen buffer area to the specified values
+        /// </summary>
+        /// <param name="width">The width of the buffer area measured in columns</param>
+        /// <param name="height">The height of the buffer area measured in rows</param>
         public static void SetBufferSize(int width, int height)
         {
-            if (OperatingSystem.IsWindows())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.SetBufferSize(width, height);
             }
@@ -801,31 +843,58 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Standard
 
+        /// <summary>
+        /// Acquires the standard error stream
+        /// </summary>
+        /// <returns>The standard error stream</returns>
         public static Stream OpenStandardError()
         {
             return Console.OpenStandardError();
         }
 
+        /// <summary>
+        /// Acquires the standard error stream, which is set to a specified buffer size
+        /// </summary>
+        /// <param name="bufferSize">This parameter has no effect, but its value must be greater than or equal to zero</param>
+        /// <returns>The standard error stream</returns>
         public static Stream OpenStandardError(int bufferSize)
         {
             return Console.OpenStandardError(bufferSize);
         }
 
+        /// <summary>
+        /// Acquires the standard input stream
+        /// </summary>
+        /// <returns>The standard input stream</returns>
         public static Stream OpenStandardInput()
         {
             return Console.OpenStandardInput();
         }
 
+        /// <summary>
+        /// Acquires the standard input stream, which is set to a specified buffer size
+        /// </summary>
+        /// <param name="bufferSize">This parameter has no effect, but its value must be greater than or equal to zero</param>
+        /// <returns>The standard input stream</returns>
         public static Stream OpenStandardInput(int bufferSize)
         {
             return Console.OpenStandardInput(bufferSize);
         }
 
+        /// <summary>
+        /// Acquires the standard output stream
+        /// </summary>
+        /// <returns>The standard output stream</returns>
         public static Stream OpenStandardOutput()
         {
             return Console.OpenStandardOutput();
         }
 
+        /// <summary>
+        /// Acquires the standard output stream, which is set to a specified buffer size
+        /// </summary>
+        /// <param name="bufferSize">This parameter has no effect, but its value must be greater than or equal to zero</param>
+        /// <returns>The standard output stream</returns>
         public static Stream OpenStandardOutput(int bufferSize)
         {
             return Console.OpenStandardOutput(bufferSize);
@@ -835,6 +904,9 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Color
 
+        /// <summary>
+        /// Sets the foreground and background console colors to their defaults
+        /// </summary>
         public static void ResetColor()
         {
             Console.ResetColor();
@@ -844,16 +916,28 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Text
 
+        /// <summary>
+        /// Sets the System.Console.Error property to the specified System.IO.TextWriter object
+        /// </summary>
+        /// <param name="newError">A stream that is the new standard error output</param>
         public static void SetError(TextWriter newError)
         {
             Console.SetError(newError);
         }
 
+        /// <summary>
+        /// Sets the System.Console.In property to the specified System.IO.TextReader object
+        /// </summary>
+        /// <param name="newIn">A stream that is the new standard input</param>
         public static void SetIn(TextReader newIn)
         {
             Console.SetIn(newIn);
         }
 
+        /// <summary>
+        /// Sets the System.Console.Out property to target the System.IO.TextWriter object
+        /// </summary>
+        /// <param name="newOut">A text writer to be used as the new standard output</param>
         public static void SetOut(TextWriter newOut)
         {
             Console.SetOut(newOut);
@@ -863,17 +947,27 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Window
 
+        /// <summary>
+        /// Sets the position of the console window relative to the screen buffer
+        /// </summary>
+        /// <param name="left">The column position of the upper left corner of the console window</param>
+        /// <param name="top">The row position of the upper left corner of the console window</param>
         public static void SetWindowPosition(int left, int top)
         {
-            if (OperatingSystem.IsWindows())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.SetWindowPosition(left, top);
             }
         }
 
+        /// <summary>
+        /// Sets the height and width of the console window to the specified values
+        /// </summary>
+        /// <param name="width">The width of the console window measured in columns</param>
+        /// <param name="height">The height of the console window measured in rows</param>
         public static void SetWindowSize(int width, int height)
         {
-            if (OperatingSystem.IsWindows())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Console.SetWindowSize(width, height);
             }
@@ -883,176 +977,334 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Write
 
+        /// <summary>
+        /// Writes the text representation of the specified Boolean value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(bool value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the specified Unicode character value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(char value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the specified array of Unicode characters to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(char[]? buffer)
         {
             Console.Write(buffer);
         }
 
+        /// <summary>
+        /// Writes the specified subarray of Unicode characters to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(char[] buffer, int index, int count)
         {
             Console.Write(buffer, index, count);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified System.Decimal value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(decimal value)
         {
             Console.Write(value);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified double-precision floating-point value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(double value)
         {
             Console.Write(value);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified 32-bit signed integer value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(int value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified 64-bit signed integer value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(long value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified object to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(object? value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified single-precision floating-point value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(float value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the specified string value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(string? value)
         {
             Console.Write(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified object to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg0">An object to write using format</param>
         public static void Write(string format, object? arg0)
         {
             Console.Write(format, arg0);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified objects to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg0">The first object to write using format</param>
+        /// <param name="arg1">The second object to write using format</param>
         public static void Write(string format, object? arg0, object? arg1)
         {
             Console.Write(format, arg0, arg1);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified objects to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg0">The first object to write using format</param>
+        /// <param name="arg1">The second object to write using format</param>
+        /// <param name="arg2">The third object to write using format</param>
         public static void Write(string format, object? arg0, object? arg1, object? arg2)
         {
             Console.Write(format, arg0, arg1, arg2);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified array of objects to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg">An array of objects to write using format</param>
         public static void Write(string format, params object?[]? arg)
         {
             Console.Write(format, arg);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified 32-bit unsigned integer value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(uint value)
         {
             Console.Write(value);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified 64-bit unsigned integer value to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void Write(ulong value)
         {
             Console.Write(value);
         }
+        #endregion
 
+        #region WriteLine
+
+        /// <summary>
+        /// Writes the current line terminator to the standard output stream
+        /// </summary>
         public static void WriteLine()
         {
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified Boolean value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(bool value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(char value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// Writes the specified array of Unicode characters, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="buffer">A Unicode character array</param>
         public static void WriteLine(char[]? buffer)
         {
             Console.WriteLine(buffer);
         }
 
+        /// <summary>
+        /// Writes the specified subarray of Unicode characters, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="buffer">An array of Unicode characters</param>
+        /// <param name="index">The starting position in buffer</param>
+        /// <param name="count">The number of characters to write</param>
         public static void WriteLine(char[] buffer, int index, int count)
         {
             Console.WriteLine(buffer, index, count);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified System.Decimal value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(decimal value)
         {
             Console.WriteLine(value);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified double-precision floating-point value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(double value)
         {
             Console.WriteLine(value);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified 32-bit signed integer value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(int value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified 64-bit signed integer value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(long value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified object, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(object? value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified single-precision floating-point value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(float value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// Writes the specified string value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(string? value)
         {
             Console.WriteLine(value);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified object, followed by the current line terminator, to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg0">An object to write using format</param>
         public static void WriteLine(string format, object? arg0)
         {
             Console.WriteLine(format, arg0);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified objects, followed by the current line terminator, to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg0">The first object to write using format</param>
+        /// <param name="arg1">The second object to write using format</param>
         public static void WriteLine(string format, object? arg0, object? arg1)
         {
             Console.WriteLine(format, arg0, arg1);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified objects, followed by the current line terminator, to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg0">The first object to write using format</param>
+        /// <param name="arg1">The second object to write using format</param>
+        /// <param name="arg2">The third object to write using format</param>
         public static void WriteLine(string format, object? arg0, object? arg1, object? arg2)
         {
             Console.WriteLine(format, arg0, arg1, arg2);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified array of objects, followed by the current line terminator, to the standard output stream using the specified format information
+        /// </summary>
+        /// <param name="format">A composite format string</param>
+        /// <param name="arg">An array of objects to write using format</param>
         public static void WriteLine(string format, params object?[]? arg)
         {
             Console.WriteLine(format, arg);
         }
 
+        /// <summary>
+        /// Writes the text representation of the specified 32-bit unsigned integer value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(uint value)
         {
             Console.WriteLine(value);
         }
-        
+
+        /// <summary>
+        /// Writes the text representation of the specified 64-bit unsigned integer value, followed by the current line terminator, to the standard output stream
+        /// </summary>
+        /// <param name="value">The value to write</param>
         public static void WriteLine(ulong value)
         {
             Console.WriteLine(value);

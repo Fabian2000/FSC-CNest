@@ -1,5 +1,7 @@
 ﻿using FSC_CNest.WindowsNatives;
+using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace FSC_CNest.Graphics
 {
@@ -23,7 +25,7 @@ namespace FSC_CNest.Graphics
         /// <returns>Returns the picked color</returns>
         public static Color PickColor(int x, int y)
         {
-            if (!OperatingSystem.IsWindows())
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return Color.Black;
             }

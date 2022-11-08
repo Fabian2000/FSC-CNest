@@ -1,6 +1,9 @@
 ﻿using FSC_CNest.TerminalAdvanced;
 using FSC_CNest.WindowsNatives;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace FSC_CNest.IO
@@ -98,7 +101,7 @@ namespace FSC_CNest.IO
 
         private void CommandLine(LogType logType, string message)
         {
-            if (OperatingSystem.IsWindows() && Flags.HasFlag(LogMethod.Console))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && Flags.HasFlag(LogMethod.Console))
             {
                 if (!_terminalAttached)
                 {

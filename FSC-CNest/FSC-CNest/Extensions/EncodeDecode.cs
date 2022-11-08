@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Web;
 
 namespace FSC_CNest.Extensions
@@ -27,6 +28,7 @@ namespace FSC_CNest.Extensions
             return CNestSettings.Encoding.GetString(text);
         }
 
+#if NET6_0_OR_GREATER || NETSTANDARD1_0_OR_GREATER
         /// <summary>
         /// Encodes an URL
         /// </summary>
@@ -46,5 +48,6 @@ namespace FSC_CNest.Extensions
         {
             return HttpUtility.UrlDecode(value, CNestSettings.Encoding);
         }
+#endif
     }
 }

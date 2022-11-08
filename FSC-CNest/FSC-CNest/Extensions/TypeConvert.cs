@@ -1,4 +1,6 @@
-﻿namespace FSC_CNest.Extensions
+﻿using System;
+
+namespace FSC_CNest.Extensions
 {
     public static class TypeConvert
     {
