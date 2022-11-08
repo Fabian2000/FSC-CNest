@@ -123,7 +123,7 @@ It's always annoying to use the normal way ... This small class makes it just ea
 ### Text using FSC_CNest.Text
 If you are interested in using some UTF8 symbols like minimize, maximize, normalize and close, then check out the Symbols class
 
-# Natives and NativesValues
+### Natives and NativesValues FSC_CNest.WindowsNatives
 Not all features are made in C# only. The used native methods and some more are public available in the Native class. You need some NativeValues? Also they got their own class.
 
 ---
