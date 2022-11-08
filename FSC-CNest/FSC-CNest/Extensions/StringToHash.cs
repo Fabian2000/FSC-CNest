@@ -5,6 +5,12 @@ namespace FSC_CNest.Extensions
 {
     public static class StringToHash
     {
+        /// <summary>
+        /// Creates a hash from a string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hash"></param>
+        /// <returns>Returns the bytes of the hash</returns>
         public static byte[] ToHashBytes(this string value, string hash)
         {
             var createdHash = HashAlgorithm.Create(hash);
@@ -15,6 +21,12 @@ namespace FSC_CNest.Extensions
             return bytes ?? new byte[]{ };
         }
 
+        /// <summary>
+        /// Creates a hash from a string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="hash"></param>
+        /// <returns>Returns a string of the hash</returns>
         public static string ToHashString(this string value, string hash)
         {
             var createdHash = HashAlgorithm.Create(hash);

@@ -1,20 +1,33 @@
 ﻿namespace FSC_CNest.IO
 {
+    /// <summary>
+    /// A path builder to build paths, go forward and backwards
+    /// </summary>
     public class PathBuilder
     {
         private List<string> _path = new();
         private List<string> _forwardHistory = new();
 
+        /// <summary>
+        /// A path builder to build paths, go forward and backwards
+        /// </summary>
         public PathBuilder()
         {
 
         }
 
+        /// <summary>
+        /// A path builder to build paths, go forward and backwards
+        /// </summary>
+        /// <param name="startPath">The same as the GoTo method. Goes to the given pfad</param>
         public PathBuilder(string startPath)
         {
             GoTo(startPath);
         }
 
+        /// <summary>
+        /// Returns true, if a step forward is possible
+        /// </summary>
         public bool CanGoForward
         {
             get
@@ -23,6 +36,9 @@
             }
         }
 
+        /// <summary>
+        /// Returns true, if a step backwards is possible
+        /// </summary>
         public bool CanGoBack
         {
             get
@@ -31,6 +47,9 @@
             }
         }
 
+        /// <summary>
+        /// Returns the added path elements without the forward history included
+        /// </summary>
         public int Count
         {
             get
@@ -39,6 +58,11 @@
             }
         }
 
+        /// <summary>
+        /// Goes to the given pfad
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public PathBuilder GoTo(string path)
         {
             path = path.Replace(@"\", "/");
@@ -47,6 +71,11 @@
             return GoTo(pathElements);
         }
 
+        /// <summary>
+        /// Goes to the given pfad
+        /// </summary>
+        /// <param name="pathElements"></param>
+        /// <returns></returns>
         public PathBuilder GoTo(params string[] pathElements)
         {
             List<string> path = new List<string>(pathElements);
@@ -54,6 +83,11 @@
             return GoTo(path);
         }
 
+        /// <summary>
+        /// Goes to the given pfad
+        /// </summary>
+        /// <param name="pathElements"></param>
+        /// <returns></returns>
         public PathBuilder GoTo(List<string> pathElements)
         {
             _path.AddRange(pathElements);
@@ -62,6 +96,10 @@
             return this;
         }
 
+        /// <summary>
+        /// Goes a step forward
+        /// </summary>
+        /// <returns></returns>
         public PathBuilder GoForward()
         {
             if (CanGoForward)
@@ -73,6 +111,10 @@
             return this;
         }
 
+        /// <summary>
+        /// Goes a step backwards
+        /// </summary>
+        /// <returns></returns>
         public PathBuilder GoBack()
         {
             if (CanGoBack)
@@ -84,6 +126,10 @@
             return this;
         }
 
+        /// <summary>
+        /// Returns the path as a string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Path.Combine(_path.ToArray());

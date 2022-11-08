@@ -5,30 +5,22 @@ namespace FSC_CNest.Graphics
 {
     public class ScreenActivity
     {
-        public static Bitmap? DoScreenshot(int x, int y, int width, int height)
-        {
-            if (!OperatingSystem.IsWindows())
-            {
-                return null;
-            }
-
-            var screen = new Bitmap(width - x, height - y);
-            for (var i = x; i < width; i++)
-            { 
-                for (var j = y; j < height; j++)
-                {
-                    screen.SetPixel(i, j, PickColor(i, j));
-                }
-            }
-
-            return screen;
-        }
-
+        /// <summary>
+        /// Picks a color from the given screen coordinates
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns>Returns the picked color</returns>
         public static Color PickColor(Point point)
         {
             return PickColor(point.X, point.Y);
         }
 
+        /// <summary>
+        /// Picks a color from the given screen coordinates
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>Returns the picked color</returns>
         public static Color PickColor(int x, int y)
         {
             if (!OperatingSystem.IsWindows())

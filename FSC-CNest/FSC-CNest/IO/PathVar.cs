@@ -72,11 +72,21 @@ namespace FSC_CNest.IO
         
         public static string CurrentDrive { get; } = Path.GetPathRoot(Assembly.GetEntryAssembly()?.Location ?? string.Empty) ?? string.Empty;
 
+        /// <summary>
+        /// The same as: Environment.ExpandEnvironmentVariables(...)
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static string EnvironmentVariablePath(string path)
         {
             return Environment.ExpandEnvironmentVariables(path);
         }
 
+        /// <summary>
+        /// The same as: Environment.GetEnvironmentVariable(...)
+        /// </summary>
+        /// <param name="variable"></param>
+        /// <returns></returns>
         public static string? EnvironmentVariable(string variable)
         {
             return Environment.GetEnvironmentVariable(variable);

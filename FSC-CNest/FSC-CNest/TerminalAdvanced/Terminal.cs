@@ -7,12 +7,18 @@ namespace FSC_CNest.TerminalAdvanced
         #region Properties
 
         #region Color
+        /// <summary>
+        /// Gets or sets the background color of the console
+        /// </summary>
         public static ConsoleColor BackgroundColor
         {
             get => Console.BackgroundColor;
             set => Console.BackgroundColor = value;
         }
 
+        /// <summary>
+        /// Gets or sets the foreground color of the console.
+        /// </summary>
         public static ConsoleColor ForegroundColor
         {
             get => Console.ForegroundColor;
@@ -23,6 +29,9 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Buffer
 
+        /// <summary>
+        /// Gets or sets the height of the buffer area
+        /// </summary>
         public static int BufferHeight
         {
             get => Console.BufferHeight;
@@ -35,6 +44,9 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets or sets the width of the buffer area
+        /// </summary>
         public static int BufferWidth
         {
             get => Console.BufferWidth;
@@ -51,6 +63,9 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Key/s
 
+        /// <summary>
+        /// Gets a value indicating whether the CAPS LOCK keyboard toggle is turned on or turned off
+        /// </summary>
         public static bool CapsLock
         {
             get 
@@ -64,11 +79,17 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether a key press is available in the input stream
+        /// </summary>
         public static bool KeyAvailable
         {
             get => Console.KeyAvailable;
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the NUM LOCK keyboard toggle is turned on or turned off
+        /// </summary>
         public static bool NumberLock
         {
             get
@@ -82,6 +103,9 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the combination of the System.ConsoleModifiers.Control modifier key and System.ConsoleKey.C console key (Ctrl+C) is treated as ordinary input or as an interruption that is handled by the operating system
+        /// </summary>
         public static bool TreatControlCAsInput
         {
             get => Console.TreatControlCAsInput;
@@ -92,12 +116,18 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Cursor
 
+        /// <summary>
+        /// Gets or sets the column position of the cursor within the buffer area
+        /// </summary>
         public static int CursorLeft
         {
             get => Console.CursorLeft;
             set => Console.CursorLeft = value;
         }
 
+        /// <summary>
+        /// Gets or sets the height of the cursor within a character cell
+        /// </summary>
         public static int CursorSize
         {
             get => Console.CursorSize;
@@ -110,12 +140,18 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets or sets the row position of the cursor within the buffer area
+        /// </summary>
         public static int CursorTop
         {
             get => Console.CursorTop;
             set => Console.CursorTop = value;
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the cursor is visible
+        /// </summary>
         public static bool CursorVisible
         {
             get
@@ -140,16 +176,25 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Text
 
+        /// <summary>
+        /// Gets the standard error output stream
+        /// </summary>
         public static TextWriter Error
         {
             get => Console.Error;
         }
 
+        /// <summary>
+        /// Gets the standard input stream
+        /// </summary>
         public static TextReader In
         {
             get => Console.In;
         }
 
+        /// <summary>
+        /// Gets the standard output stream
+        /// </summary>
         public static TextWriter Out
         {
             get => Console.Out;
@@ -159,12 +204,18 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Encoding
 
+        /// <summary>
+        /// Gets or sets the encoding the console uses to read input
+        /// </summary>
         public static Encoding InputEncoding
         {
             get => Console.InputEncoding;
             set => Console.InputEncoding = value;
         }
 
+        /// <summary>
+        /// Gets or sets the encoding the console uses to write output
+        /// </summary>
         public static Encoding OutputEncoding
         {
             get => Console.OutputEncoding;
@@ -175,16 +226,25 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Redirected
 
+        /// <summary>
+        /// Gets a value that indicates whether the error output stream has been redirected from the standard error stream
+        /// </summary>
         public static bool IsErrorRedirected
         {
             get => Console.IsErrorRedirected;
         }
 
+        /// <summary>
+        /// Gets a value that indicates whether input has been redirected from the standard input stream
+        /// </summary>
         public static bool IsInputRedirected
         {
             get => Console.IsInputRedirected;
         }
 
+        /// <summary>
+        /// Gets a value that indicates whether output has been redirected from the standard output stream
+        /// </summary>
         public static bool IsOutputRedirected
         {
             get => Console.IsOutputRedirected;
@@ -194,16 +254,25 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Window
 
+        /// <summary>
+        /// Gets the largest possible number of console window rows, based on the current font and screen resolution
+        /// </summary>
         public static int LargestWindowHeight
         {
             get => Console.LargestWindowHeight;
         }
 
+        /// <summary>
+        /// Gets the largest possible number of console window columns, based on the current font and screen resolution
+        /// </summary>
         public static int LargestWindowWidth
         {
             get => Console.LargestWindowWidth;
         }
 
+        /// <summary>
+        /// Gets or sets the title to display in the console title bar
+        /// </summary>
         public static string Title
         {
             get
@@ -218,6 +287,9 @@ namespace FSC_CNest.TerminalAdvanced
             set => Console.Title = value;
         }
 
+        /// <summary>
+        /// Gets or sets the height of the console window area
+        /// </summary>
         public static int WindowHeight
         {
             get => Console.WindowHeight;
@@ -230,6 +302,9 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets or sets the width of the console window area
+        /// </summary>
         public static int WindowWidth
         {
             get => Console.WindowWidth;
@@ -242,6 +317,9 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets or sets the leftmost position of the console window area relative to the screen buffer
+        /// </summary>
         public static int WindowLeft
         {
             get => Console.WindowLeft;
@@ -254,6 +332,9 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Gets or sets the top position of the console window area relative to the screen buffer
+        /// </summary>
         public static int WindowTop
         {
             get => Console.WindowTop;
@@ -266,6 +347,9 @@ namespace FSC_CNest.TerminalAdvanced
             }
         }
 
+        /// <summary>
+        /// Sets the password char for readline methods with password enabled
+        /// </summary>
         public static char PasswordChar { get; set; } = '*';
 
         #endregion
@@ -274,6 +358,9 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Event
 
+        /// <summary>
+        /// Occurs when the System.ConsoleModifiers.Control modifier key (Ctrl) and either the System.ConsoleKey.C console key (C) or the Break key are pressed simultaneously (Ctrl+C or Ctrl+Break)
+        /// </summary>
         public static event ConsoleCancelEventHandler? CancelKeyPress
         {
             add => Console.CancelKeyPress += value;
@@ -286,11 +373,19 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Beep
 
+        /// <summary>
+        /// Plays the sound of a beep through the console speaker
+        /// </summary>
         public static void Beep()
         {
             Console.Beep();
         }
 
+        /// <summary>
+        /// Plays the sound of a beep of a specified frequency and duration through the console speaker
+        /// </summary>
+        /// <param name="frequency">The frequency of the beep, ranging from 37 to 32767 hertz</param>
+        /// <param name="duration">The duration of the beep measured in milliseconds</param>
         public static void Beep(int frequency, int duration)
         {
             if (OperatingSystem.IsWindows())
@@ -303,11 +398,17 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Clear
 
+        /// <summary>
+        /// Clears the console buffer and corresponding console window of display information
+        /// </summary>
         public static void Clear()
         {
             Console.Clear();
         }
 
+        /// <summary>
+        /// Works like pressing backspace and goes one char back in the console
+        /// </summary>
         public static void Back()
         {
             Console.WriteLine("\b \b");
@@ -317,22 +418,40 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region Read
 
+        /// <summary>
+        /// Reads the next character from the standard input stream
+        /// </summary>
+        /// <returns>The next character from the input stream, or negative one (-1) if there are currently no more characters to be read</returns>
         public static int Read()
         {
             return Read(string.Empty);
         }
 
+        /// <summary>
+        /// Reads the next character from the standard input stream
+        /// </summary>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next character from the input stream, or negative one (-1) if there are currently no more characters to be read</returns>
         public static int Read(string displayText)
         {
             Console.Write(displayText);
             return Console.Read();
         }
 
+        /// <summary>
+        /// Obtains the next character or function key pressed by the user. The pressed key is displayed in the console window
+        /// </summary>
+        /// <returns>An object that describes the System.ConsoleKey constant and Unicode character, if any, that correspond to the pressed console key. The System.ConsoleKeyInfo object also describes, in a bitwise combination of System.ConsoleModifiers values, whether one or more Shift, Alt, or Ctrl modifier keys was pressed simultaneously with the console key</returns>
         public static ConsoleKeyInfo ReadKey()
         {
             return Console.ReadKey();
         }
 
+        /// <summary>
+        /// Obtains the next character or function key pressed by the user. The pressed key is displayed in the console window
+        /// </summary>
+        /// <param name="intercept">Determines whether to display the pressed key in the console window. true to not display the pressed key; otherwise, false</param>
+        /// <returns>An object that describes the System.ConsoleKey constant and Unicode character, if any, that correspond to the pressed console key. The System.ConsoleKeyInfo object also describes, in a bitwise combination of System.ConsoleModifiers values, whether one or more Shift, Alt, or Ctrl modifier keys was pressed simultaneously with the console key</returns>
         public static ConsoleKeyInfo ReadKey(bool intercept)
         {
             return Console.ReadKey(intercept);
@@ -342,21 +461,41 @@ namespace FSC_CNest.TerminalAdvanced
 
         #region ReadLines
 
+        /// <summary>
+        /// Reads the next line of characters from the standard input stream
+        /// </summary>
+        /// <returns>The next line of characters from the input stream, or null if no more lines are available</returns>
         public static string? ReadLine()
         {
             return ReadLine(string.Empty);
         }
 
+        /// <summary>
+        /// Reads the next line of characters from the standard input stream
+        /// </summary>
+        /// <param name="hidePassword">True: Hides the text with a password char</param>
+        /// <returns>The next line of characters from the input stream, or null if no more lines are available</returns>
         public static string? ReadLine(bool hidePassword)
         {
             return ReadLine(string.Empty, hidePassword);
         }
 
+        /// <summary>
+        /// Reads the next line of characters from the standard input stream
+        /// </summary>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <returns>The next line of characters from the input stream, or null if no more lines are available</returns>
         public static string? ReadLine(string displayText)
         {
             return ReadLine(displayText, false);
         }
 
+        /// <summary>
+        /// Reads the next line of characters from the standard input stream
+        /// </summary>
+        /// <param name="displayText">Adds a text before the user may input a text</param>
+        /// <param name="hidePassword">True: Hides the text with a password char</param>
+        /// <returns>The next line of characters from the input stream, or null if no more lines are available</returns>
         public static string? ReadLine(string displayText, bool hidePassword)
         {
             Console.Write(displayText);
@@ -395,11 +534,20 @@ namespace FSC_CNest.TerminalAdvanced
             return password.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static byte ReadByte()
         {
             return ReadByte(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static byte ReadByte(string displayText)
         {
             if (byte.TryParse(ReadLine(displayText), out byte value))
@@ -410,11 +558,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static int ReadInt()
         {
             return ReadInt(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static int ReadInt(string displayText)
         {
             if (int.TryParse(ReadLine(displayText), out int value))
@@ -425,11 +582,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static long ReadLong()
         {
             return ReadLong(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static long ReadLong(string displayText)
         {
             if (long.TryParse(ReadLine(displayText), out long value))
@@ -440,11 +606,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static float ReadFloat()
         {
             return ReadFloat(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static float ReadFloat(string displayText)
         {
             if (float.TryParse(ReadLine(displayText), out float value))
@@ -455,11 +630,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static double ReadDouble()
         {
             return ReadDouble(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static double ReadDouble(string displayText)
         {
             if (double.TryParse(ReadLine(displayText), out double value))
@@ -470,11 +654,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static char ReadChar()
         {
             return ReadChar(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static char ReadChar(string displayText)
         {
             if (char.TryParse(ReadLine(displayText), out char value))
@@ -485,11 +678,20 @@ namespace FSC_CNest.TerminalAdvanced
             return '\n';
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static uint ReadUInt()
         {
             return ReadChar(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static uint ReadUInt(string displayText)
         {
             if (uint.TryParse(ReadLine(displayText), out uint value))
@@ -500,11 +702,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static ulong ReadULong()
         {
             return ReadULong(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static ulong ReadULong(string displayText)
         {
             if (ulong.TryParse(ReadLine(displayText), out ulong value))
@@ -515,11 +726,20 @@ namespace FSC_CNest.TerminalAdvanced
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool ReadBool()
         {
             return ReadBool(string.Empty);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public static bool ReadBool(string displayText)
         {
             switch (ReadLine(displayText)?.ToLower())

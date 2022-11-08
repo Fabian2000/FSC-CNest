@@ -6,11 +6,27 @@ namespace FSC_CNest.Hardware
 {
     public static class Computer
     {
+        /// <summary>
+        /// Returns the hardware informations of the computer
+        /// </summary>
+        /// <param name="volumeSerialNumber"></param>
+        /// <param name="volumeMaxComponentLength"></param>
+        /// <param name="volumeFileSystemName"></param>
+        /// <param name="computerName"></param>
         public static void GetHardwareInfo(out string? volumeSerialNumber, out string? volumeMaxComponentLength, out string? volumeFileSystemName, out string computerName)
         {
             GetHardwareInfo(PathVar.CurrentDrive, out volumeSerialNumber, out volumeMaxComponentLength, out volumeFileSystemName, out computerName);
         }
 
+        /// <summary>
+        /// Returns the hardware informations of the computer
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="volumeSerialNumber"></param>
+        /// <param name="volumeMaxComponentLength"></param>
+        /// <param name="volumeFileSystemName"></param>
+        /// <param name="computerName"></param>
+        /// <exception cref="PlatformNotSupportedException"></exception>
         public static void GetHardwareInfo(string path, out string? volumeSerialNumber, out string? volumeMaxComponentLength, out string? volumeFileSystemName, out string computerName)
         {
             if (!OperatingSystem.IsWindows())
